@@ -15,12 +15,12 @@ Instagram clone, project for course GLO-3112 of team 3 at Laval University (Wint
 
 Here are the links to our environments : 
 
-Production
+Production (only works when the app is deployed in AWS)
 - [Frontend](http://ugram.ca)
 - [Backend](http://api.ugram.ca)
 - [API documentation](http://api.ugram.ca/docs)
 
-Staging
+Staging (only works when the app is deployed in AWS)
 - [Frontend](http://staging.ugram.ca)
 - [Backend](http://api.staging.ugram.ca)
 - [API documentation](http://api.staging.ugram.ca/docs)

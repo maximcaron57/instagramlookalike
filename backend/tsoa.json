@@ -1,0 +1,30 @@
+{
+  "noImplicitAdditionalProperties": true,
+  "controllerPathGlobs": [
+    "./src/controllers/**/*controller.ts"
+  ],
+  "spec": {
+    "basePath": "/",
+    "entryFile": "./src/main.ts",
+    "specVersion": 3,
+    "outputDirectory": "./src",
+    "securityDefinitions": {
+      "AUTH": {
+        "type": "oauth2"
+      },
+      "USERNAME": {
+        "type": "oauth2"
+      },
+      "POST_ID": {
+        "type": "oauth2"
+      }
+    }
+  },
+  "routes": {
+    "basePath": "/",
+    "entryFile": "./src/main.ts",
+    "routesDir": "./src/routes",
+    "middleware": "express",
+    "authenticationModule": "./src/middlewares/authorization.ts"
+  }
+}

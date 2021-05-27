@@ -1,0 +1,127 @@
+{
+  "name": "ugram-frontend",
+  "version": "3.0.0",
+  "private": true,
+  "author": "Team 3 for course GLO-3112 (Winter 2021)",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/styles": "^4.11.3",
+    "@material-ui/system": "^4.11.3",
+    "@sentry/react": "^6.2.5",
+    "@sentry/tracing": "^6.2.5",
+    "@toast-ui/react-image-editor": "^3.14.3",
+    "axios": "^0.21.1",
+    "cross-fetch": "^3.1.4",
+    "env-cmd": "^10.1.0",
+    "formik": "^2.2.6",
+    "history": "^5.0.0",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-full-screen": "^1.0.2",
+    "react-ga": "^3.3.0",
+    "react-helmet-async": "^1.0.9",
+    "react-infinite-scroller": "^1.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "react-select": "^4.3.0",
+    "react-test-renderer": "^17.0.2",
+    "react-toast-notifications": "^2.4.3",
+    "react-uuid": "^1.0.2",
+    "sass": "^1.32.8",
+    "tui-color-picker": "^2.2.6",
+    "tui-image-editor": "^3.14.3",
+    "web-vitals": "^1.1.1",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.2.7",
+    "@storybook/addon-controls": "^6.2.7",
+    "@storybook/addon-essentials": "^6.2.7",
+    "@storybook/addon-knobs": "^6.2.7",
+    "@storybook/addon-links": "^6.2.7",
+    "@storybook/node-logger": "^6.2.7",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.2.7",
+    "@testing-library/dom": "7.30.3",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/react-hooks": "^5.1.1",
+    "@testing-library/user-event": "^13.1.2",
+    "@types/chai": "^4.2.15",
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^26.0.22",
+    "@types/material-ui": "^0.21.8",
+    "@types/node": "^14.14.37",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/yup": "^0.29.11",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
+    "chai": "^4.3.4",
+    "enzyme": "^3.11.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4",
+    "expect": "^26.6.2",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "node-factory": "^0.4.1",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
+    "build:production": "env-cmd -f .env.production react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .tsx --ext .ts src/",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --write",
+      "yarn run lint --fix"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

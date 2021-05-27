@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  database:
+    restart: unless-stopped
+    env_file:
+      - ./database/.env
+    build: ./database
+    ports:
+      - 27017:27017
+    volumes:
+      - ./database/database:/data/db
+  backend:
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    build: ./backend
+    ports:
+      - 4000:4000
+    volumes:
+      - ./backend:/usr/src/app
+    links:
+      - database
+    command: yarn start:watch
+    tty: true
+    stdin_open: true
+  frontend:
+    restart: unless-stopped
+    env_file:
+      - ./frontend/.env.local
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/usr/src/app
+    links:
+      - backend
+    command: yarn start
+    tty: true
+    stdin_open: true

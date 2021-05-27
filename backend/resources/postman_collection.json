@@ -1,0 +1,1715 @@
+{
+	"info": {
+		"_postman_id": "c08670f2-8f78-4673-b644-4fd32dd06a18",
+		"name": "ugram-backend",
+		"description": "Contact Support:\n Name: Team 3 for course GLO-3112 ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "{username}",
+					"item": [
+						{
+							"name": "posts",
+							"item": [
+								{
+									"name": "Get user's posts",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{cookie}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/{{user.username}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"{{user.username}}",
+												"posts"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/users/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "Get user's posts (with limit query)",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Cookie",
+												"type": "text",
+												"value": "{{cookie}}"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/{{user.username}}/posts?limit={{post.query.limit}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"{{user.username}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "{{post.query.limit}}"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/users/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "Get user's posts (with before query)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const today = new Date().toISOString()",
+													"",
+													"postman.setEnvironmentVariable(\"post.query.before\", today);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Cookie",
+												"type": "text",
+												"value": "{{cookie}}"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/{{user.username}}/posts?before={{post.query.before}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"{{user.username}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "before",
+													"value": "{{post.query.before}}"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/users/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "Get user's posts (with after query)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const today = new Date().toISOString()",
+													"",
+													"postman.setEnvironmentVariable(\"post.query.after\", today);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Cookie",
+												"type": "text",
+												"value": "{{cookie}}"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/{{user.username}}/posts?after={{post.query.after}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"{{user.username}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "after",
+													"value": "{{post.query.after}}"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/users/:username",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														":username"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "Create post with reference",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const location = pm.response.headers.get(\"Location\");",
+													"const postId = location.split(\"/\")[2];",
+													"",
+													"postman.setEnvironmentVariable(\"post.postId\", postId);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Cookie",
+												"value": "{{cookie}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reference\": \"{{post.reference}}\",\n    \"hashtags\": [\n        \"{{post.hashtags.firstHashtag}}\",\n        \"{{post.hashtags.secondHashtag}}\"\n    ],\n    \"usertags\": [],\n    \"description\": \"{{post.description}}\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/{{user.username}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"{{user.username}}",
+												"posts"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"reference\": \"<string>\",\n    \"hashtags\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"description\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/:username/posts",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														":username",
+														"posts"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": \"exercitation eu irure nisi consequat\",\n \"reference\": \"proident amet\",\n \"hashtags\": [\n  \"esse in\",\n  \"deserunt qui in aliqua\"\n ],\n \"user\": \"id sint\",\n \"createdAt\": \"2000-04-29T14:06:11.130Z\",\n \"description\": \"voluptate tempor\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Create post with data",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const location = pm.response.headers.get(\"Location\");",
+													"const postId = location.split(\"/\")[2];",
+													"",
+													"postman.setEnvironmentVariable(\"post.postId\", postId);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Cookie",
+												"type": "text",
+												"value": "{{cookie}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"data\": \"{{post.data}}\",\n    \"hashtags\": [\n        \"{{post.hashtags.firstHashtag}}\",\n        \"{{post.hashtags.secondHashtag}}\"\n    ],\n    \"usertags\": [],\n    \"description\": \"{{post.description}}\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/{{user.username}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"{{user.username}}",
+												"posts"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"reference\": \"<string>\",\n    \"hashtags\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"description\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/users/:username/posts",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"users",
+														":username",
+														"posts"
+													],
+													"variable": [
+														{
+															"key": "username"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": \"exercitation eu irure nisi consequat\",\n \"reference\": \"proident amet\",\n \"hashtags\": [\n  \"esse in\",\n  \"deserunt qui in aliqua\"\n ],\n \"user\": \"id sint\",\n \"createdAt\": \"2000-04-29T14:06:11.130Z\",\n \"description\": \"voluptate tempor\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{cookie}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/{{user.username}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"{{user.username}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						},
+						{
+							"name": "Modify user with avatar reference",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Cookie",
+										"type": "text",
+										"value": "{{cookie}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{user.email.new}}\",\n    \"phoneNumber\": \"{{user.phoneNumber.new}}\",\n    \"firstName\": \"{{user.firstName.new}}\",\n    \"lastName\": \"{{user.lastName.new}}\",\n    \"description\": \"{{user.description}}\",\n    \"avatarReference\": \"{{user.avatarReference}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/{{user.username}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"{{user.username}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						},
+						{
+							"name": "Modify user with avatar data",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Cookie",
+										"value": "{{cookie}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{user.email.new}}\",\n    \"phoneNumber\": \"{{user.phoneNumber.new}}\",\n    \"firstName\": \"{{user.firstName.new}}\",\n    \"lastName\": \"{{user.lastName.new}}\",\n    \"description\": \"{{user.description}}\",\n    \"avatarData\": \"{{user.avatarData}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/{{user.username}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"{{user.username}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get users (with username query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users?username={{user.username}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "{{user.username}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get users (with limit query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users?limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get users (with before query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users?before=someusername",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "before",
+									"value": "someusername"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get users (with after query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users?after=someusername",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "someusername"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "{postId}",
+					"item": [
+						{
+							"name": "Get post",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{cookie}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/posts/{{post.postId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts",
+										"{{post.postId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						},
+						{
+							"name": "Modify post",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{cookie}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hashtags\": [\n        \"{{post.hashtags.firstHashtag.new}}\",\n        \"{{post.hashtags.secondHashtag.new}}\"\n    ],\n    \"usertags\": [],\n    \"description\": \"{{post.description.new}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts/{{post.postId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts",
+										"{{post.postId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						},
+						{
+							"name": "Delete post",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{cookie}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/posts/{{post.postId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts",
+										"{{post.postId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":username"
+											],
+											"variable": [
+												{
+													"key": "username"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/posts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get posts (with hashtag and description query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/posts?hashtag={{post.hashtags.firstHashtag}}&description={{post.description.2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "hashtag",
+									"value": "{{post.hashtags.firstHashtag}}"
+								},
+								{
+									"key": "description",
+									"value": "{{post.description.2}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get posts (with limit query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/posts?limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get posts (with before query)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const today = new Date().toISOString()",
+									"",
+									"postman.setEnvironmentVariable(\"post.query.before\", today);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/posts?before={{post.query.before}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "before",
+									"value": "{{post.query.before}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get posts (with after query)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const today = new Date().toISOString()",
+									"",
+									"postman.setEnvironmentVariable(\"post.query.after\", today);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/posts?after={{post.query.after}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "{{post.query.after}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "hashtags",
+			"item": [
+				{
+					"name": "Get top 2 hashtags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/hashtags?limit=2&orderBy=count",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"hashtags"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "orderBy",
+									"value": "count"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "Get search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/search",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get search (with value query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/search?value=value",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "value"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get search (with value and limit query)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/search?value=value&limit=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "value"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,1143 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Hashtag": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"name",
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NotificationType": {
+				"enum": [
+					"reaction",
+					"comment"
+				],
+				"type": "string"
+			},
+			"NotificationEvent": {
+				"properties": {
+					"type": {
+						"$ref": "#/components/schemas/NotificationType"
+					},
+					"commentText": {
+						"type": "string"
+					},
+					"user": {
+						"type": "string"
+					},
+					"userAvatarReference": {
+						"type": "string"
+					},
+					"postId": {
+						"type": "string"
+					},
+					"postImageReference": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"type",
+					"user",
+					"postId",
+					"postImageReference",
+					"createdAt"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Reaction": {
+				"properties": {
+					"user": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"user"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UserComment": {
+				"properties": {
+					"user": {
+						"type": "string"
+					},
+					"text": {
+						"type": "string"
+					},
+					"userAvatar": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"user",
+					"text"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"SavedPost": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"reference": {
+						"type": "string"
+					},
+					"thumbnail": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"hashtags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"usertags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"reactions": {
+						"items": {
+							"$ref": "#/components/schemas/Reaction"
+						},
+						"type": "array"
+					},
+					"comments": {
+						"items": {
+							"$ref": "#/components/schemas/UserComment"
+						},
+						"type": "array"
+					},
+					"user": {
+						"type": "string"
+					},
+					"userAvatar": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"reference",
+					"thumbnail",
+					"hashtags",
+					"usertags",
+					"reactions",
+					"user",
+					"createdAt"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"PagedResults_SavedPost_": {
+				"properties": {
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/SavedPost"
+						},
+						"type": "array"
+					},
+					"firstKey": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastKey": {
+						"type": "string",
+						"nullable": true
+					},
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"results",
+					"firstKey",
+					"lastKey",
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"PostModificationParams": {
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"hashtags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"usertags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CommentCreationParams": {
+				"properties": {
+					"text": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"text"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"SimpleUser": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"avatarReference": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"firstName"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"SearchResults": {
+				"properties": {
+					"users": {
+						"items": {
+							"$ref": "#/components/schemas/SimpleUser"
+						},
+						"type": "array"
+					},
+					"hashtags": {
+						"items": {
+							"$ref": "#/components/schemas/Hashtag"
+						},
+						"type": "array"
+					},
+					"descriptionCount": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"users",
+					"hashtags",
+					"descriptionCount"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"User": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"avatarReference": {
+						"type": "string"
+					},
+					"notifiedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"username",
+					"email",
+					"firstName",
+					"notifiedAt",
+					"createdAt"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"PagedResults_User_": {
+				"properties": {
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
+					},
+					"firstKey": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastKey": {
+						"type": "string",
+						"nullable": true
+					},
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"results",
+					"firstKey",
+					"lastKey",
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UserCreationParams": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"email",
+					"firstName",
+					"lastName"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UserModificationParams": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"avatarData": {
+						"type": "string"
+					},
+					"avatarReference": {
+						"type": "string"
+					},
+					"notifiedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"PostCreationParams": {
+				"properties": {
+					"data": {
+						"type": "string"
+					},
+					"reference": {
+						"type": "string"
+					},
+					"thumbnail": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"hashtags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"usertags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"hashtags",
+					"usertags"
+				],
+				"type": "object",
+				"additionalProperties": true
+			}
+		},
+		"securitySchemes": {
+			"AUTH": {
+				"type": "oauth2",
+				"flows": {}
+			},
+			"USERNAME": {
+				"type": "oauth2",
+				"flows": {}
+			},
+			"POST_ID": {
+				"type": "oauth2",
+				"flows": {}
+			}
+		}
+	},
+	"info": {
+		"title": "ugram-backend",
+		"version": "3.0.0",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {
+			"name": "Team 3 for course GLO-3112 ",
+			"url": "Winter 2021"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/hashtags": {
+			"get": {
+				"operationId": "GetHashtags",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Hashtag"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "like",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 21,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "after",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/notifications": {
+			"get": {
+				"operationId": "GetNotifications",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/NotificationEvent"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/posts": {
+			"get": {
+				"operationId": "GetPosts",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedResults_SavedPost_"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "description",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "hashtag",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 21,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "Query posts created at a <date><id> before the one provided.\nIf `after` is also provided, only `after` is used.",
+						"in": "query",
+						"name": "before",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Query posts created at a <date><id> after the one provided.",
+						"in": "query",
+						"name": "after",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/posts/{id}": {
+			"get": {
+				"operationId": "GetPost",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SavedPost"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeletePost",
+				"responses": {
+					"200, OK": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"POST_ID": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdatePost",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SavedPost"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"POST_ID": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PostModificationParams"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/posts/{id}/comments": {
+			"post": {
+				"operationId": "CreateComment",
+				"responses": {
+					"201, Created": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SavedPost"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CommentCreationParams"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/posts/{id}/reactions": {
+			"post": {
+				"operationId": "CreateReaction",
+				"responses": {
+					"201, Created": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/search": {
+			"get": {
+				"operationId": "GetSearch",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SearchResults"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "value",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 21,
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/tokenInfo": {
+			"get": {
+				"operationId": "GetTokenInfo",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/User"
+										},
+										{}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/users": {
+			"get": {
+				"operationId": "GetUsers",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedResults_User_"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "username",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 21,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "Query users with a username alphabetically before the one provided.\nIf `after` is also provided, only `after` is used.",
+						"in": "query",
+						"name": "before",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Query users with a username alphabetically after the one provided.",
+						"in": "query",
+						"name": "after",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateUser",
+				"responses": {
+					"201, Created": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserCreationParams"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/{username}": {
+			"get": {
+				"operationId": "GetUser",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateUser",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"USERNAME": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserModificationParams"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"204, No Content": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"USERNAME": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/{username}/posts": {
+			"get": {
+				"operationId": "GetPosts",
+				"responses": {
+					"200, OK": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedResults_SavedPost_"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"AUTH": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 21,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "Query posts created at a <date><id> before the one provided.\nIf `after` is also provided, only `after` is used.",
+						"in": "query",
+						"name": "before",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Query posts created at a <date><id> after the one provided.",
+						"in": "query",
+						"name": "after",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreatePost",
+				"responses": {
+					"201, Created": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SavedPost"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"USERNAME": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "username",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PostCreationParams"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}

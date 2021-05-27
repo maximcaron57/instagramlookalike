@@ -1,0 +1,50 @@
+.tui-image-editor-header-logo, .tui-image-editor-download-btn {
+  display: none !important;
+}
+
+.tui-image-editor-header-buttons {
+  float: left !important;
+}
+
+.tui-image-editor-submenu {
+  height: 25% !important;
+}
+
+.tui-image-editor-container .tui-image-editor-wrap .tui-image-editor-size-wrap .tui-image-editor-align-wrap {
+  vertical-align: unset !important;
+}
+
+.tui-image-editor {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: start !important;
+  margin: 85px 0px 0px 0px !important;
+}
+
+.css-1xhoubn-ToastContainer, .tui-image-editor-header-buttons {
+  z-index: 10000 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .tui-image-editor-help-menu,
+  .tui-image-editor-partition,
+  .filter-color-item,
+  .tui-image-editor-disabled,
+  .tui-image-editor-newline {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .tui-image-editor-help-menu {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .tui-image-editor-submenu-align .tui-image-editor-checkbox-group,
+  .tui-image-editor-partition {
+    display: none !important;
+  }
+}

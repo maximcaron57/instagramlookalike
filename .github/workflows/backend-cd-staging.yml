@@ -1,0 +1,59 @@
+name: Backend CD (staging)
+
+on:
+  workflow_run:
+    workflows:
+      - "Backend CI"
+    types:
+      - completed
+    branches:
+      - develop
+
+defaults:
+  run:
+    working-directory: backend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get timestamp
+        uses: gerred/actions/current-time@master
+        id: current-time
+      - name: Run string replace
+        uses: frabert/replace-string-action@master
+        id: format-time
+        with:
+          pattern: '[:\.]+'
+          string: "${{ steps.current-time.outputs.time }}"
+          replace-with: '-'
+          flags: 'g'
+      - name: Restore node_modules cache
+        uses: actions/cache@v2
+        with:
+          path: 'node_modules'
+          key: node_modules-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Build application
+        run: yarn build:all
+      - name: Run database migrations
+        env:
+          MIGRATE_dbConnectionUri: ${{ secrets.MONGO_MIGRATE_URL_STAGING }}
+          MONGO_URL: ${{ secrets.MONGO_URL_STAGING }}
+          MONGO_USERNAME: ${{ secrets.MONGO_USERNAME_STAGING }}
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD_STAGING }}
+        run: yarn migrate up --autosync
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*' -x 'resources*' -x 'node_modules*' -x 'src*'
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v16
+        with:
+          aws_access_key: ${{ secrets.AWS_STAGING_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_STAGING_SECRET_KEY }}
+          application_name: ugram-backend
+          environment_name: ugram-backend-staging-2
+          version_label: "ugram-backend-staging-2-${{ steps.format-time.outputs.replaced }}"
+          region: ca-central-1
+          deployment_package: backend/deploy.zip

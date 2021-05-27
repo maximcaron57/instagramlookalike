@@ -1,0 +1,67 @@
+name: Coverage
+
+on:
+  workflow_run:
+    workflows:
+      - "Frontend CI"
+      - "Backend CI"
+    types:
+      - completed
+    branches:
+      - develop
+
+jobs:
+  cover-frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    strategy:
+      matrix:
+        node-version: [ 15.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Restore node_modules cache
+        uses: actions/cache@v2
+        with:
+          path: 'node_modules'
+          key: node_modules-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Run tests with coverage
+        run: yarn test --coverage --collectCoverageFrom=!src/**/*.stories.*
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+  cover-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    strategy:
+      matrix:
+        node-version: [ 15.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Restore node_modules cache
+        uses: actions/cache@v2
+        with:
+          path: 'node_modules'
+          key: node_modules-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Run tests with coverage
+        run: yarn test --coverage
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

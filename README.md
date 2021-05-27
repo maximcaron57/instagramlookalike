@@ -1,4 +1,4 @@
-# Ugram
+# Instagram Lookalike
 
 [![Frontend CI](https://github.com/GLO3112-classrooms/ugram-h2021-team-03/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/GLO3112-classrooms/ugram-h2021-team-03/actions/workflows/frontend-ci.yml)
 [![Frontend CD (staging)](https://github.com/GLO3112-classrooms/ugram-h2021-team-03/actions/workflows/frontend-cd-staging.yml/badge.svg)](https://github.com/GLO3112-classrooms/ugram-h2021-team-03/actions/workflows/frontend-cd-staging.yml)
